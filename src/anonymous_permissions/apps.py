@@ -6,6 +6,15 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password
 from django.db.models.signals import pre_save
 
+caches = (
+    '_group_perm_cache',
+    '_user_perm_cache',
+    '_dsspermissionchecker',
+    '_officepermissionchecker',
+    '_perm_cache',
+    '_dss_acl_cache',
+)
+
 
 class AnonymousPermissionsConfig(AppConfig):
     name = 'anonymous_permissions'
@@ -20,3 +29,6 @@ class AnonymousPermissionsConfig(AppConfig):
 def disable_anon_user_password_save(sender, instance, **kwargs):
     if instance.username == settings.ANONYMOUS_USERNAME:
         instance.passwork = make_password(None)
+        for cache in caches:
+            if hasattr(instance, cache):
+                delattr(instance, cache)
