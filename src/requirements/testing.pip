@@ -3,6 +3,8 @@ attrs==17.4.0             # via pytest
 beautifulsoup4==4.6.0     # via webtest
 coverage==4.4.2           # via pytest-cov
 django-webtest==1.9.2
+django-groups-cache
+hashids
 execnet==1.5.0            # via pytest-cache
 factory-boy==2.10.0
 faker==0.8.10             # via factory-boy

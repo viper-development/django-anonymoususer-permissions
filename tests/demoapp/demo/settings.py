@@ -16,6 +16,7 @@ INSTALLED_APPS = ['django.contrib.auth',
                   'django.contrib.staticfiles',
                   'django.contrib.admin',
                   'anonymous_permissions.apps.AnonymousPermissionsConfig',
+                  'groups_cache.apps.GroupsCacheConfig',
                   ]
 
 if django.VERSION[0] == 2:
@@ -26,6 +27,7 @@ if django.VERSION[0] == 2:
         'django.contrib.auth.middleware.AuthenticationMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
+        'groups_cache.middleware.GroupsCacheMiddleware',
     )
 else:
     MIDDLEWARE_CLASSES = (
@@ -35,6 +37,7 @@ else:
         'django.contrib.auth.middleware.AuthenticationMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
+        'groups_cache.middleware.GroupsCacheMiddleware',
     )
 
 TEMPLATES = [
